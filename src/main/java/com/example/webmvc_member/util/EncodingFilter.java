@@ -1,4 +1,4 @@
-package util;
+package com.example.webmvc_member.util;
 
 import java.io.IOException;
 import javax.servlet.Filter;

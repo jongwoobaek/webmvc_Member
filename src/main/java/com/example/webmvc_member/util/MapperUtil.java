@@ -1,4 +1,4 @@
-package util;
+package com.example.webmvc_member.util;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
