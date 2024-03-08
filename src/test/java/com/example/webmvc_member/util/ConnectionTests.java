@@ -1,4 +1,4 @@
-package com.example.webmvc_member;
+package com.example.webmvc_member.util;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
