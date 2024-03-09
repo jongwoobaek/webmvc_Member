@@ -72,4 +72,32 @@ public class MemberDAOTests {
 
         Assertions.assertEquals(1, result);
     }
+
+    @Test
+    public void updateOneTest() throws Exception {
+        log.info("updateOneTest...!");
+
+        memberDAO.insert(memberVO);
+
+        String newPassword = "newPassword";
+        String newName = "newName";
+        String newEmail = "newEmail";
+
+        MemberDTO memberDTO = MemberDTO.builder()
+                .id(memberVO.getId())
+                .pw(newPassword)
+                .name(newName)
+                .email(newEmail)
+                .build();
+
+        int result = memberDAO.updateOne(memberDTO);
+
+        Assertions.assertEquals(1, result);
+
+        MemberDTO updatedMember = memberDAO.selectOne(memberVO.getId());
+
+        Assertions.assertEquals(updatedMember.getPw(), newPassword);
+        Assertions.assertEquals(updatedMember.getName(), newName);
+        Assertions.assertEquals(updatedMember.getEmail(), newEmail);
+    }
 }
