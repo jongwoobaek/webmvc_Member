@@ -27,6 +27,12 @@ public enum MemberService {
         return modelMapper;
     }
 
+    public MemberDTO getMember(String id) throws Exception {
+        MemberDTO memberDTO = memberDAO.selectOne(id);
+
+        return memberDTO;
+    }
+
     public List<MemberVO> listMembers() throws Exception {
         List<MemberVO> memberVOList = memberDAO.selectAll();
 
