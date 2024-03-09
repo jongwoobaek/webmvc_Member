@@ -32,6 +32,17 @@ public class MemberServiceTests {
     }
 
     @Test
+    public void getMemberTest() throws Exception {
+        log.info("getMemberTest...!");
+
+        memberService.addMember(memberDTO);
+
+        String id = memberService.getMember(memberDTO.getId()).getId();
+
+        Assertions.assertEquals(memberDTO.getId(), id);
+    }
+
+    @Test
     public void listMembersTest() throws Exception {
         log.info("listMembersTest...!");
 
