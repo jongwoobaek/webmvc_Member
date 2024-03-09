@@ -87,4 +87,20 @@ public class MemberDAO {
 
         return row;
     }
+
+    public int updateOne(MemberDTO memberDTO) throws Exception {
+        String sql = "UPDATE tbl_member SET pw = ?, name = ?, email = ? WHERE id = ?";
+
+        @Cleanup Connection conn = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        pstmt.setString(1, memberDTO.getPw());
+        pstmt.setString(2, memberDTO.getName());
+        pstmt.setString(3, memberDTO.getEmail());
+        pstmt.setString(4, memberDTO.getId());
+
+        int row = pstmt.executeUpdate();
+
+        return row;
+    }
 }
