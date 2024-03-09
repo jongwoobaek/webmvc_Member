@@ -50,7 +50,7 @@ public class MemberDAO {
         return row;
     }
 
-    public int deleteMember(MemberVO memberVO) throws Exception {
+    public int delete(MemberVO memberVO) throws Exception {
         String sql = "DELETE FROM tbl_member WHERE id = ?";
 
         @Cleanup Connection conn = ConnectionUtil.INSTANCE.getConnection();
