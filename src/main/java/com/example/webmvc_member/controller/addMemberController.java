@@ -9,7 +9,7 @@ import java.io.IOException;
 public class addMemberController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
+        req.getRequestDispatcher("/WEB-INF/member/signup.jsp").forward(req, res);
     }
 
     @Override
