@@ -14,13 +14,14 @@
     <h1>회원 정보 수정</h1>
     <form action="/member/modMember.do" method="post">
         <label>
-            아이디 : <input type="text" name="id" value="${member.id}" readonly disabled>
+            아이디 : <span>${member.id}</span>
+            <input id="userId" type="hidden" name="id" value="${member.id}">
         </label>
         <label>
             비밀번호 : <input type="password" name="pw" value="${member.pw}" required>
         </label>
         <label>
-            이름 : <input type="test" name="name" value="${member.name}" required>
+            이름 : <input type="text" name="name" value="${member.name}" required>
         </label>
         <label>
             이메일 : <input type="text" name="email" value="${member.email}" required>
