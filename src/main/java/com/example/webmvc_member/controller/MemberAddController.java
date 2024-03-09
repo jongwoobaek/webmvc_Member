@@ -6,7 +6,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "addMemberController", urlPatterns = "/member/addMember.do")
-public class addMemberController extends HttpServlet {
+public class MemberAddController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/member/signup.jsp").forward(req, res);
