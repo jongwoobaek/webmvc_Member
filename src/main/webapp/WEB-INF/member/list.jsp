@@ -12,5 +12,6 @@
 </head>
 <body>
     <h1>회원 정보</h1>
+    <a href="/member/addMember.do">회원 가입하기</a>
 </body>
 </html>
