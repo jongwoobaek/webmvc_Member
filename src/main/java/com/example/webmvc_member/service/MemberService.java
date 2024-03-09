@@ -38,4 +38,10 @@ public enum MemberService {
 
         this.memberDAO.insert(memberVO);
     }
+
+    public int deleteMember(String id) throws Exception {
+       int row = this.memberDAO.delete(id);
+
+       return row;
+    }
 }
