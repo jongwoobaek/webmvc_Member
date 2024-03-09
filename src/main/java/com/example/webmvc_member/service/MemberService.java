@@ -52,4 +52,10 @@ public enum MemberService {
 
        return row;
     }
+
+    public int updateMember(MemberDTO memberDTO) throws Exception {
+        int row = this.memberDAO.updateOne(memberDTO);
+
+        return row;
+    }
 }
