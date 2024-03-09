@@ -34,7 +34,7 @@ public class MemberDAO {
         return memberVOList;
     }
 
-    public int addMember(MemberVO memberVO) throws Exception {
+    public int insert(MemberVO memberVO) throws Exception {
         String sql = "INSERT INTO tbl_member (id, pw, name, email) values (?, ?, ?, ?)";
 
         @Cleanup Connection conn = ConnectionUtil.INSTANCE.getConnection();
