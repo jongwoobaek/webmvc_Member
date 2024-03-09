@@ -35,16 +35,16 @@ public class MemberDAO {
         return memberVOList;
     }
 
-    public int addMember(String id, String pw, String name, String email) throws Exception {
+    public int addMember(MemberVO memberVO) throws Exception {
         String sql = "INSERT INTO tbl_member (id, pw, name, email) values (?, ?, ?, ?)";
 
         @Cleanup Connection conn = ConnectionUtil.INSTANCE.getConnection();
         @Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
 
-        pstmt.setString(1, id);
-        pstmt.setString(2, pw);
-        pstmt.setString(3, name);
-        pstmt.setString(4, email);
+        pstmt.setString(1, memberVO.getId());
+        pstmt.setString(2, memberVO.getPw());
+        pstmt.setString(3, memberVO.getName());
+        pstmt.setString(4, memberVO.getEmail());
 
         int row = pstmt.executeUpdate();
 
