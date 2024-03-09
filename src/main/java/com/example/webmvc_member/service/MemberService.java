@@ -1,8 +1,12 @@
 package com.example.webmvc_member.service;
 
 import com.example.webmvc_member.dao.MemberDAO;
+import com.example.webmvc_member.domain.MemberVO;
+import com.example.webmvc_member.dto.MemberDTO;
 import com.example.webmvc_member.util.MapperUtil;
 import org.modelmapper.ModelMapper;
+
+import java.util.List;
 
 public enum MemberService {
     INSTANCE;
@@ -21,5 +25,11 @@ public enum MemberService {
 
     public ModelMapper getModelMapper() {
         return modelMapper;
+    }
+
+    public List<MemberVO> listMembers() throws Exception {
+        List<MemberVO> memberVOList = memberDAO.selectAll();
+
+        return memberVOList;
     }
 }
