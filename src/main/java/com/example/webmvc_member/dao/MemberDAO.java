@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MemberDAO {
-    public List<MemberVO> listMembers() throws Exception {
+    public List<MemberVO> selectAll() throws Exception {
         List<MemberVO> memberVOList = new ArrayList<>();
         String sql = "SELECT * from tbl_member";
 
