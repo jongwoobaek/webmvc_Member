@@ -32,4 +32,10 @@ public enum MemberService {
 
         return memberVOList;
     }
+
+    public void addMember(MemberDTO memberDTO) throws Exception {
+        MemberVO memberVO = this.modelMapper.map(memberDTO, MemberVO.class);
+
+        this.memberDAO.insert(memberVO);
+    }
 }
