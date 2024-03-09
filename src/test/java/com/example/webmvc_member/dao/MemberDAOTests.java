@@ -36,4 +36,15 @@ public class MemberDAOTests {
 
         Assertions.assertEquals(1, result);
     }
+
+    @Test
+    public void deleteMemberTest() throws Exception {
+        log.info("deleteMemberTest...!");
+
+        memberDAO.addMember(memberVO);
+
+        int result = memberDAO.deleteMember(memberVO);
+
+        Assertions.assertEquals(1, result);
+    }
 }
