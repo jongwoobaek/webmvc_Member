@@ -7,7 +7,6 @@ import lombok.Cleanup;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,11 +21,11 @@ public class MemberDAO {
 
         while (rs.next()) {
             MemberVO memberVO = MemberVO.builder()
-                    .id("id")
-                    .pw("pw")
-                    .name("name")
-                    .email("email")
-                    .signupDate(LocalDate.parse("signupDate"))
+                    .id(rs.getString("id"))
+                    .pw(rs.getString("pw"))
+                    .name(rs.getString("name"))
+                    .email(rs.getString("email"))
+                    .signupDate(rs.getDate("signupDate").toLocalDate())
                     .build();
 
             memberVOList.add(memberVO);
