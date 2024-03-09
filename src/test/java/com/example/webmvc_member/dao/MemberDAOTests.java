@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 @Log4j2
 public class MemberDAOTests {
     MemberDAO memberDAO;
@@ -26,6 +28,17 @@ public class MemberDAOTests {
     @AfterEach
     public void afterEach() throws Exception {
         memberDAO.deleteMember(memberVO);
+    }
+
+    @Test
+    public void listMembersTest() throws Exception {
+        log.info("listMembersTest...!");
+
+        memberDAO.addMember(memberVO);
+
+        List<MemberVO> memberVOList = memberDAO.listMembers();
+
+        Assertions.assertEquals(1, memberVOList.size());
     }
 
     @Test
