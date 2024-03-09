@@ -88,7 +88,7 @@ public class MemberDAO {
         return row;
     }
 
-    public int updateOne(MemberDTO memberDTO) throws Exception {
+    public int update(MemberDTO memberDTO) throws Exception {
         String sql = "UPDATE tbl_member SET pw = ?, name = ?, email = ? WHERE id = ?";
 
         @Cleanup Connection conn = ConnectionUtil.INSTANCE.getConnection();

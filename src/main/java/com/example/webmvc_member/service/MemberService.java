@@ -54,7 +54,7 @@ public enum MemberService {
     }
 
     public int updateMember(MemberDTO memberDTO) throws Exception {
-        int row = this.memberDAO.updateOne(memberDTO);
+        int row = this.memberDAO.update(memberDTO);
 
         return row;
     }

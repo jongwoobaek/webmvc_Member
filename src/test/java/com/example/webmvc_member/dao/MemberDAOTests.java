@@ -74,8 +74,8 @@ public class MemberDAOTests {
     }
 
     @Test
-    public void updateOneTest() throws Exception {
-        log.info("updateOneTest...!");
+    public void updateTest() throws Exception {
+        log.info("updateTest...!");
 
         memberDAO.insert(memberVO);
 
@@ -90,7 +90,7 @@ public class MemberDAOTests {
                 .email(newEmail)
                 .build();
 
-        int result = memberDAO.updateOne(memberDTO);
+        int result = memberDAO.update(memberDTO);
 
         Assertions.assertEquals(1, result);
 
