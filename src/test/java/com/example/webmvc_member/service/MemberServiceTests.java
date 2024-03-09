@@ -72,4 +72,32 @@ public class MemberServiceTests {
 
         Assertions.assertEquals(1, result);
     }
+
+    @Test
+    public void updateMemberTest() throws Exception {
+        log.info("updateMemberTest...!");
+
+        memberService.addMember(memberDTO);
+
+        String newPassword = "newPassword";
+        String newName = "newName";
+        String newEmail = "newEmail";
+
+        MemberDTO member = MemberDTO.builder()
+                .id(memberDTO.getId())
+                .pw(newPassword)
+                .name(newName)
+                .email(newEmail)
+                .build();
+
+        int result = memberService.updateMember(member);
+
+        Assertions.assertEquals(1, result);
+
+        MemberDTO updatedMember = memberService.getMember(memberDTO.getId());
+
+        Assertions.assertEquals(updatedMember.getPw(), newPassword);
+        Assertions.assertEquals(updatedMember.getName(), newName);
+        Assertions.assertEquals(updatedMember.getEmail(), newEmail);
+    }
 }
