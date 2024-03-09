@@ -50,4 +50,17 @@ public class MemberDAO {
 
         return row;
     }
+
+    public int deleteMember(MemberVO memberVO) throws Exception {
+        String sql = "DELETE FROM tbl_member WHERE id = ?";
+
+        @Cleanup Connection conn = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        pstmt.setString(1, memberVO.getId());
+
+        int row = pstmt.executeUpdate();
+
+        return row;
+    }
 }
