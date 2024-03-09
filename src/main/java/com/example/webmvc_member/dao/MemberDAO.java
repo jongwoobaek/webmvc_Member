@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MemberDAO {
-    public MemberDTO selectOne(String id) throws Exception {
+    public MemberDTO select(String id) throws Exception {
         String sql = "SELECT id, pw, name, email FROM tbl_member WHERE id = ?";
 
         MemberDTO memberDTO = null;

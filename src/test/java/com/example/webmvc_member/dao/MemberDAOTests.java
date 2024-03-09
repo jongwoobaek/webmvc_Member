@@ -32,12 +32,12 @@ public class MemberDAOTests {
     }
 
     @Test
-    public void selectOneTest() throws Exception {
-        log.info("selectOneTest...!");
+    public void selectTest() throws Exception {
+        log.info("selectTest...!");
 
         memberDAO.insert(memberVO);
 
-        MemberDTO memberDTO = memberDAO.selectOne(memberVO.getId());
+        MemberDTO memberDTO = memberDAO.select(memberVO.getId());
 
         Assertions.assertEquals(memberDTO.getId(), memberVO.getId());
     }
@@ -94,7 +94,7 @@ public class MemberDAOTests {
 
         Assertions.assertEquals(1, result);
 
-        MemberDTO updatedMember = memberDAO.selectOne(memberVO.getId());
+        MemberDTO updatedMember = memberDAO.select(memberVO.getId());
 
         Assertions.assertEquals(updatedMember.getPw(), newPassword);
         Assertions.assertEquals(updatedMember.getName(), newName);

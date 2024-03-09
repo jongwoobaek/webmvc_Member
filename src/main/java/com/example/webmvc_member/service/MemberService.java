@@ -28,7 +28,7 @@ public enum MemberService {
     }
 
     public MemberDTO getMember(String id) throws Exception {
-        MemberDTO memberDTO = memberDAO.selectOne(id);
+        MemberDTO memberDTO = memberDAO.select(id);
 
         return memberDTO;
     }
