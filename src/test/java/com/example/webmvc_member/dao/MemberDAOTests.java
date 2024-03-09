@@ -34,7 +34,7 @@ public class MemberDAOTests {
     public void listMembersTest() throws Exception {
         log.info("listMembersTest...!");
 
-        memberDAO.addMember(memberVO);
+        memberDAO.insert(memberVO);
 
         List<MemberVO> memberVOList = memberDAO.listMembers();
 
@@ -42,10 +42,10 @@ public class MemberDAOTests {
     }
 
     @Test
-    public void addMemberTest() throws Exception {
-        log.info("addMemberTest...!");
+    public void insertTest() throws Exception {
+        log.info("insertTest...!");
 
-        int result = memberDAO.addMember(memberVO);
+        int result = memberDAO.insert(memberVO);
 
         Assertions.assertEquals(1, result);
     }
@@ -54,7 +54,7 @@ public class MemberDAOTests {
     public void deleteMemberTest() throws Exception {
         log.info("deleteMemberTest...!");
 
-        memberDAO.addMember(memberVO);
+        memberDAO.insert(memberVO);
 
         int result = memberDAO.deleteMember(memberVO);
 
