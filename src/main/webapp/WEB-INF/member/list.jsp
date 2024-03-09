@@ -37,6 +37,24 @@
             background-color: #0056b3; /* 호버 시 배경색 변경 */
         }
 
+        .link {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            background-color: transparent; /* 버튼 배경색 투명 */
+            color: black; /* 버튼 텍스트 색상 검정색으로 변경 */
+            border: none;
+            border-radius: 5px;
+            transition: none; /* 호버 시 색상 변경 없음 */
+            text-decoration: none; /* 텍스트에 밑줄 추가 */
+        }
+
+        .link:hover {
+            text-decoration: underline; /* 호버 시 밑줄 유지 */
+        }
+
         a {
             text-decoration: none;
         }
@@ -66,12 +84,12 @@
                 <td>${member.email}</td>
                 <td>${member.signupDate}</td>
                 <td>
-                    <a href="/member/modMember.do?id=${member.id}" class="btn">수정</a>
+                    <a href="/member/modMember.do?id=${member.id}" class="link">수정</a>
                 </td>
                 <td>
                     <form method="post" action="/member/delMember.do">
                         <input type="hidden" name="id" value="${member.id}">
-                        <input type="submit" value="삭제" class="btn">
+                        <input type="submit" value="삭제" class="link">
                     </form>
                 </td>
             </tr>
