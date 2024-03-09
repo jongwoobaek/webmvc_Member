@@ -31,12 +31,12 @@ public class MemberDAOTests {
     }
 
     @Test
-    public void listMembersTest() throws Exception {
-        log.info("listMembersTest...!");
+    public void selectAllTest() throws Exception {
+        log.info("selectAllTest...!");
 
         memberDAO.insert(memberVO);
 
-        List<MemberVO> memberVOList = memberDAO.listMembers();
+        List<MemberVO> memberVOList = memberDAO.selectAll();
 
         Assertions.assertEquals(1, memberVOList.size());
     }
