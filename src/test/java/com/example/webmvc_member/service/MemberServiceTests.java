@@ -36,4 +36,15 @@ public class MemberServiceTests {
 
         Assertions.assertEquals(1, result);
     }
+
+    @Test
+    public void deleteMemberTest() throws Exception {
+        log.info("deleteMemberTest...!");
+
+        memberService.addMember(memberDTO);
+
+        int result = memberService.deleteMember(memberDTO.getId());
+
+        Assertions.assertEquals(1, result);
+    }
 }
