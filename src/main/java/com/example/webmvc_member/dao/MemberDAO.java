@@ -1,6 +1,7 @@
 package com.example.webmvc_member.dao;
 
 import com.example.webmvc_member.domain.MemberVO;
+import com.example.webmvc_member.dto.MemberDTO;
 import com.example.webmvc_member.util.ConnectionUtil;
 import lombok.Cleanup;
 
@@ -11,6 +12,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MemberDAO {
+    public MemberDTO selectOne(String id) throws Exception {
+        String sql = "SELECT id, pw, name, email FROM tbl_member WHERE id = ?";
+
+        MemberDTO memberDTO = null;
+
+        @Cleanup Connection conn = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        pstmt.setString(1, id);
+
+        @Cleanup ResultSet rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            memberDTO = MemberDTO.builder()
+                    .id(rs.getString("id"))
+                    .pw(rs.getString("pw"))
+                    .name(rs.getString("name"))
+                    .email(rs.getString("email"))
+                    .build();
+        }
+
+        return memberDTO;
+    }
+
     public List<MemberVO> selectAll() throws Exception {
         List<MemberVO> memberVOList = new ArrayList<>();
         String sql = "SELECT * from tbl_member";
