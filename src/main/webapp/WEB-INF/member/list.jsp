@@ -11,8 +11,11 @@
 <head>
     <title>Member list</title>
     <style>
-        table{ border-collapse : collapse; }
-        th,td{
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
             width: 200px;
             height: 50px;
             text-align: center;
@@ -59,6 +62,42 @@
             text-decoration: none;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function modifyMember(memberId) {
+            const url = "/member/modMember.do?id=" + memberId;
+
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function (response) {
+                    // 페이지 이동
+                    window.location.href = url;
+                },
+                error: function (xhr, status, error) {
+                    // 오류 처리
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        function deleteMember(memberId) {
+            const url = "/member/delMember.do?id=" + memberId;
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                success: function (response) {
+                    // 페이지 새로고침 또는 회원 목록에서 해당 항목 제거
+                    location.reload(); // 예: 페이지 새로고침
+                },
+                error: function (xhr, status, error) {
+                    // 오류 처리
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 <h1>회원 정보</h1>
@@ -84,13 +123,10 @@
                 <td>${member.email}</td>
                 <td>${member.signupDate}</td>
                 <td>
-                    <a href="/member/modMember.do?id=${member.id}" class="link">수정</a>
+                    <a href="#" class="link" onclick="modifyMember('${member.id}')">수정</a>
                 </td>
                 <td>
-                    <form method="post" action="/member/delMember.do">
-                        <input type="hidden" name="id" value="${member.id}">
-                        <input type="submit" value="삭제" class="link">
-                    </form>
+                    <a href="#" class="link" onclick="deleteMember('${member.id}')">삭제</a>
                 </td>
             </tr>
         </c:forEach>
