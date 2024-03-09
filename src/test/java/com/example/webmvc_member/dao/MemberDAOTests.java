@@ -27,7 +27,7 @@ public class MemberDAOTests {
 
     @AfterEach
     public void afterEach() throws Exception {
-        memberDAO.deleteMember(memberVO);
+        memberDAO.delete(memberVO);
     }
 
     @Test
@@ -51,12 +51,12 @@ public class MemberDAOTests {
     }
 
     @Test
-    public void deleteMemberTest() throws Exception {
-        log.info("deleteMemberTest...!");
+    public void deleteTest() throws Exception {
+        log.info("deleteTest...!");
 
         memberDAO.insert(memberVO);
 
-        int result = memberDAO.deleteMember(memberVO);
+        int result = memberDAO.delete(memberVO);
 
         Assertions.assertEquals(1, result);
     }
