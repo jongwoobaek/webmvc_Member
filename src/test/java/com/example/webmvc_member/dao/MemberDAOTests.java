@@ -1,6 +1,7 @@
 package com.example.webmvc_member.dao;
 
 import com.example.webmvc_member.domain.MemberVO;
+import com.example.webmvc_member.dto.MemberDTO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -28,6 +29,17 @@ public class MemberDAOTests {
     @AfterEach
     public void afterEach() throws Exception {
         memberDAO.delete(memberVO.getId());
+    }
+
+    @Test
+    public void selectOneTest() throws Exception {
+        log.info("selectOneTest...!");
+
+        memberDAO.insert(memberVO);
+
+        MemberDTO memberDTO = memberDAO.selectOne(memberVO.getId());
+
+        Assertions.assertEquals(memberDTO.getId(), memberVO.getId());
     }
 
     @Test
