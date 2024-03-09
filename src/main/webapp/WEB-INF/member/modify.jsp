@@ -17,13 +17,13 @@
             아이디 : <span>${member.id}</span>
         </label>
         <label>
-            비밀번호 : <input type="password" value="${member.pw}">
+            비밀번호 : <input type="password" name="pw" value="${member.pw}">
         </label>
         <label>
-            이름 : <input type="test" value="${member.name}">
+            이름 : <input type="test" name="name" value="${member.name}">
         </label>
         <label>
-            이메일 : <input type="text" value="${member.email}">
+            이메일 : <input type="text" name="email" value="${member.email}">
         </label>
         <input type="submit" value="수정 완료">
     </form>
