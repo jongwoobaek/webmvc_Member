@@ -1,11 +1,14 @@
 package com.example.webmvc_member.service;
 
+import com.example.webmvc_member.domain.MemberVO;
 import com.example.webmvc_member.dto.MemberDTO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 @Log4j2
 public class MemberServiceTests {
@@ -26,6 +29,17 @@ public class MemberServiceTests {
     @AfterEach
     public void afterEach() throws Exception {
         memberService.deleteMember(memberDTO.getId());
+    }
+
+    @Test
+    public void listMembersTest() throws Exception {
+        log.info("listMembersTest...!");
+
+        memberService.addMember(memberDTO);
+
+        List<MemberVO> memberVOList = memberService.listMembers();
+
+        Assertions.assertEquals(1, memberVOList.size());
     }
 
     @Test
