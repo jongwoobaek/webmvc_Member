@@ -1,5 +1,6 @@
 package com.example.webmvc_member.controller;
 
+import com.example.webmvc_member.service.MemberService;
 import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.*;
@@ -17,6 +18,17 @@ public class MemberDeleteController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        log.info("MemberDeleteController called...!");
 
+        String id = req.getParameter("id");
+        log.info(id);
+
+        try {
+            MemberService.INSTANCE.deleteMember(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        res.sendRedirect("/member/listMembers.do");
     }
 }
