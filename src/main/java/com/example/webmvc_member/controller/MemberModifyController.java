@@ -36,7 +36,28 @@ public class MemberModifyController extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        log.info("MemberModifyController doPost called...!");
 
+        String id = req.getParameter("id");
+        String pw = req.getParameter("pw");
+        String name = req.getParameter("name");
+        String email = req.getParameter("email");
+
+        MemberDTO memberDTO = MemberDTO.builder()
+                .id(id)
+                .pw(pw)
+                .name(name)
+                .email(email)
+                .build();
+
+        try {
+            int row = memberService.updateMember(memberDTO);
+            System.out.println(row);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        res.sendRedirect("/member/listMembers.do");
     }
 }
