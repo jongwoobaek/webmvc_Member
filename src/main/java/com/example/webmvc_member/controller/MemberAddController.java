@@ -26,6 +26,13 @@ public class MemberAddController extends HttpServlet {
         String name = req.getParameter("name");
         String email = req.getParameter("email");
 
+        if (isDuplicateId(id)) {
+            req.setAttribute("error", "이미 사용중인 아이디 입니다.");
+            req.getRequestDispatcher("/WEB-INF/member/signup.jsp").forward(req, res);
+
+            return;
+        }
+
         MemberDTO memberDTO = MemberDTO.builder()
                 .id(id)
                 .pw(pw)
@@ -40,5 +47,18 @@ public class MemberAddController extends HttpServlet {
         }
 
         res.sendRedirect("/member/listMembers.do");
+    }
+
+    private boolean isDuplicateId(String id) {
+        MemberDTO memberDTO = null;
+
+        try {
+            memberDTO = MemberService.INSTANCE.getMember(id);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return memberDTO != null;
     }
 }
