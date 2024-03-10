@@ -97,6 +97,11 @@
             text-decoration: none;
         }
     </style>
+    <script>
+        const confirmDelete = () => {
+            return confirm("정말 삭제하시겠습니까?")
+        }
+    </script>
 </head>
 <body>
 <h1>회원 정보</h1>
@@ -128,7 +133,7 @@
                     </form>
                 </td>
                 <td>
-                    <form method="post" action="/member/delMember.do">
+                    <form method="post" action="/member/delMember.do" onsubmit="return confirmDelete()">
                         <input type="hidden" name="id" value="${member.id}">
                         <input type="submit" value="삭제" class="link">
                     </form>
