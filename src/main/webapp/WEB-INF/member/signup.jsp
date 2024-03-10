@@ -70,11 +70,19 @@
             background-color: #ccc;
             color: #333;
         }
+
+        .error-msg {
+            text-align: center;
+            color: red;
+        }
     </style>
 </head>
 <body>
 <h1>회원 가입</h1>
 <form action="/member/addMember.do" method="post">
+    <c:if test="${not empty error}">
+        <h2 class="error-msg">${error}</h2>
+    </c:if>
     <label>
         아이디 : <input type="text" name="id" required autocomplete="off" placeholder="아이디를 입력하세요.">
     </label>
