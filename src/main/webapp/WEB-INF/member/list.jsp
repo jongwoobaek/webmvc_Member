@@ -11,20 +11,50 @@
 <head>
     <title>Member list</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 50px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
         table {
+            width: 100%;
             border-collapse: collapse;
+            margin-bottom: 20px;
         }
 
         th, td {
-            width: 200px;
             height: 50px;
             text-align: center;
             border: 1px solid black;
         }
 
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        td {
+            background-color: #fff;
+        }
+
         /* 수정 및 삭제 버튼에 대한 스타일 */
         .btn {
-            display: inline-block;
+            display: block; /* 버튼을 블록 요소로 설정하여 한 줄에 하나씩 표시됩니다 */
+            width: 120px; /* 버튼의 너비를 지정합니다 */
+            margin: 0 auto; /* 버튼을 가운데 정렬합니다 */
             padding: 10px 20px;
             font-size: 16px;
             text-align: center;
@@ -34,10 +64,15 @@
             border: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+            text-decoration: none; /* 텍스트에 밑줄 추가 */
         }
 
         .btn:hover {
             background-color: #0056b3; /* 호버 시 배경색 변경 */
+        }
+
+        form {
+            display: inline;
         }
 
         .link {
@@ -62,46 +97,10 @@
             text-decoration: none;
         }
     </style>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        function modifyMember(memberId) {
-            const url = "/member/modMember.do?id=" + memberId;
-
-            $.ajax({
-                type: "GET",
-                url: url,
-                success: function (response) {
-                    // 페이지 이동
-                    window.location.href = url;
-                },
-                error: function (xhr, status, error) {
-                    // 오류 처리
-                    console.error(xhr.responseText);
-                }
-            });
-        }
-
-        function deleteMember(memberId) {
-            const url = "/member/delMember.do?id=" + memberId;
-
-            $.ajax({
-                type: "POST",
-                url: url,
-                success: function (response) {
-                    // 페이지 새로고침 또는 회원 목록에서 해당 항목 제거
-                    location.reload(); // 예: 페이지 새로고침
-                },
-                error: function (xhr, status, error) {
-                    // 오류 처리
-                    console.error(xhr.responseText);
-                }
-            });
-        }
-    </script>
 </head>
 <body>
 <h1>회원 정보</h1>
-<form method="post">
+<div class="container">
     <table>
         <thead>
         <tr>
@@ -123,16 +122,22 @@
                 <td>${member.email}</td>
                 <td>${member.signupDate}</td>
                 <td>
-                    <a href="#" class="link" onclick="modifyMember('${member.id}')">수정</a>
+                    <form method="get" action="/member/modMember.do">
+                        <input type="hidden" name="id" value="${member.id}">
+                        <input type="submit" value="수정" class="link">
+                    </form>
                 </td>
                 <td>
-                    <a href="#" class="link" onclick="deleteMember('${member.id}')">삭제</a>
+                    <form method="post" action="/member/delMember.do">
+                        <input type="hidden" name="id" value="${member.id}">
+                        <input type="submit" value="삭제" class="link">
+                    </form>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-</form>
+</div>
 <a href="/member/addMember.do" class="btn">회원 가입하기</a>
 </body>
 </html>
