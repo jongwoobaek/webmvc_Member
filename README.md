@@ -6,7 +6,9 @@
 
 ## 회원 가입
 <img width="957" alt="image" src="https://github.com/jongwoobaek/webmvc_Member/assets/112931368/74f11933-fd3d-4668-b653-236d0fd4f3c0">
-![2024-03-11 00;23;49](https://github.com/jongwoobaek/webmvc_Member/assets/112931368/70861d58-b95c-472a-b73d-cc5798309aa0)
+
+![2024-03-11 00;23;49](https://github.com/jongwoobaek/webmvc_Member/assets/112931368/e4cfad28-de6d-4912-b2aa-561a0d9a5c4f)
+
 
 ## 회원 정보 수정
 <img width="955" alt="image" src="https://github.com/jongwoobaek/webmvc_Member/assets/112931368/7cc473e4-b1e8-408d-b808-76bdb4ce1280">
