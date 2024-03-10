@@ -15,4 +15,4 @@
 
 
 ## 회원 삭제
-![Uploading 2024-03-10 23;43;05.gif…]()
+![2024-03-10 23;43;05](https://github.com/jongwoobaek/webmvc_Member/assets/112931368/e9be18b0-dab4-4d35-b4bd-35a94647a949)
